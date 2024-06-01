@@ -1,0 +1,420 @@
+@font-face {
+    font-family: NeueMachina;
+    src: url(./fonts/NeueMachina-Ultrabold.otf);
+    src: local("Neue Machina Ultrabold")
+    format("embedded-opentype");
+}
+@font-face {
+    font-family: ProximaNova;
+    src: url(./fonts/Proxima-Nova-Font.otf);
+    src: local("Proxima Nova")
+    format("embedded-opentype");
+}
+
+@font-face {
+    font-family: NeueMachina;
+    src: url(./fonts/NeueMachina-Light.otf);
+    src: local("Neue Machina Light")
+    format("embedded-opentype");
+    /* Add any additional font properties or rules here */
+}
+@font-face {
+    font-family: NeueMachina;
+    src: url(./fonts/NeueMachina-Regular.otf);
+    src: local("Neue Machina Regular")
+    format("embedded-opentype");
+  
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0); /* Start at original position */
+  }
+  50% {
+    transform: translateY(-5px); /* Move up 5px at midpoint */
+  }
+  100% {
+    transform: translateY(0); /* Return to original position */
+  }
+}
+@keyframes blink {
+  from { opacity: 1.0; }  /* Start fully visible */
+  50% { opacity: 0.0; }  /* Disappear at 50% mark */
+  to { opacity: 1.0; }  /* Back to fully visible at the end */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fadeout {
+  from {
+      opacity: 1;
+  }
+  to {
+      opacity: 0;
+  }
+}
+@keyframes spin{
+  0%{
+    background-position-x: 0;
+  }
+
+  100%{
+    background-position-x: 380px;
+
+  }
+}
+@keyframes fadeBackground {
+  from {
+    background-image: linear-gradient(to bottom, rgba(19, 19, 19, 1), rgba(19, 19, 19, 1)), url("./pic/space.png");
+  }
+  12.5% { /* New keyframe at 12.5% */
+    background-image: linear-gradient(to bottom, rgba(19, 19, 19, 0.9), rgba(19, 19, 19, 0.9)), url("./pic/space.png");
+  }
+  25% {
+    background-image: linear-gradient(to bottom, rgba(19, 19, 19, 0.8), rgba(19, 19, 19, 0.8)), url("./pic/space.png");
+  }
+  37.5% { /* New keyframe at 37.5% */
+    background-image: linear-gradient(to bottom, rgba(19, 19, 19, 0.65), rgba(19, 19, 19, 0.65)), url("./pic/space.png");
+  }
+  
+  50% {
+    background-image: linear-gradient(to bottom, rgba(19, 19, 19, 0.5), rgba(19, 19, 19, 0.5)), url("./pic/space.png");
+  }
+  75% {
+    background-image: linear-gradient(to bottom, rgba(19, 19, 19, 0.2), rgba(19, 19, 19, 0.2)), url("./pic/space.png");
+  }
+  to {
+    background-image: linear-gradient(to bottom, rgba(19, 19, 19, 0.1), rgba(19, 19, 19, 0.1)), url("./pic/space.png");
+  }
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(255, 255, 255);
+overflow-y: hidden;
+background-size: cover;
+
+}
+
+.fadeBgStars{
+  animation: fadeBackground 4s ease-in-out forwards;
+  background-size: cover; /* Ensure image covers the entire element */
+
+}
+.button-start{
+  font-family: ProximaNova,sans-serif;
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 24px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;
+  color: #000000;
+  text-align: center;
+  text-transform: uppercase;
+  background: transparent;
+  border-radius: 24px;
+  border: 2px solid #3EF2D0;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+  box-sizing: border-box;
+  background-color: whitesmoke;
+  border-top-width: 5px;
+}
+.button-start:hover{
+background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 255);
+}
+
+.el-float{
+    position: absolute;
+    animation: float 2s infinite ease-in-out; /* Animation name, duration, repeat, timing */
+    opacity: 0.5; /* Apply opacity to both background-color and image */
+
+}
+
+.el-stars{
+  display: none;
+  background: #000;
+  overflow: hidden;
+  background-image: 
+  radial-gradient(circle at 40% 50%, #fafafa 0%, #a30d8a00 40%),
+  radial-gradient(circle at 65% 60%, #0a010c 0%, #580e7500 45%),
+  radial-gradient(circle at 40% 60%, #076066 0%, #17777700 45%);
+  background-blend-mode: screen;
+  align-items: center;
+  justify-content: center;
+}
+.scene{
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+display: none;
+  perspective: 10vmin;
+}
+.Syntax-img{
+  width: 60%;
+  z-index: -1;
+
+}
+.dial-ctn{
+  overflow: hidden;
+  width: 100%;
+  background-color: #232323;
+  z-index: 9;
+  height: 10em;
+  border: 2px solid black;
+  font-family: NeueMachina, "Neue Machina ReUltrabold", sans-serif;
+color: whitesmoke;
+}
+.myVideo {
+  display: none;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+width: 100%;
+z-index: 0;
+}
+.menu{
+  display: none;
+  width: 30%;
+  height: 100%;
+  background-color: rgba(14, 14, 14, 0.5);
+  z-index: 11;
+position: absolute;
+  opacity: 0;
+  left: 0%;
+ top: 0;
+}
+.menu-options{
+ display: flex; 
+ list-style-type: none;
+
+}
+h4{
+  font-size: 3em;
+  font-family: NeueMachina, "Neue Machina ReUltrabold", sans-serif;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: white;
+  text-align: center;
+}
+ul{
+  list-style-type: none;
+}
+.menu-options > ul > li{
+margin: 30px;
+border-bottom: 5px solid  white;
+transition: border-bottom 0.5s ease;
+text-decoration: none;
+}
+
+li:hover{
+  border-bottom: 3px solid aqua !important;
+
+}
+
+
+.menu-list{
+  font-size: 2em;
+  font-family: NeueMachina, "Neue Machina ReUltrabold", sans-serif;
+  text-decoration: none !important;
+  color: white;
+
+}
+.dial-space{
+  width: 70%;
+top: 0;
+  position: absolute;
+z-index: 9;
+display: none;
+flex-direction: column;
+}
+.dial-name{
+  width: 15em;
+  height: 1em;
+  background-color: #ffffff;
+color: #000;
+border-bottom-right-radius: 12px;
+font-family: NeueMachina, "Neue Machina ReUltrabold", sans-serif;
+text-align: center;
+padding: 5px;
+font-weight: 800;
+}
+.scene div{
+  width: 1.5vmin;
+  height: 1.5vmin;
+  transform: 
+  translateZ(-100vmin)
+  rotateY(90deg)
+  rotateX(var(--rx))
+  translateZ(var(--x))
+  scaleX(1);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  animation:  animate 1.5s infinite ease-in;
+  background: #fff;
+  box-shadow: 0 0 20px rgb(10, 239, 255);
+}
+
+@keyframes animate {
+  0%, 90%{
+      opacity: 1;
+  }
+  100%{
+      opacity: 0;
+      transform: 
+      translateZ(0vmin)
+      rotateY(90deg)
+      rotateX(var(--rx))
+      translateZ(var(--x))
+      scaleX(6);
+  }
+}
+
+
+
+.el-float > img{
+    width: 100%;
+
+}
+#particles-js{
+    position: absolute;
+height: 100%;
+
+}
+.header-ctn{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+justify-content: space-between;
+height: 40em;
+
+}
+h1{
+    font-size: 6em;
+    font-family: ProximaNova, "Proxima Nova";
+
+}
+.header-ctn > span{
+    font-weight: 800;
+    font-family: NeueMachina, "Neue Machina ReUltrabold", sans-serif;
+}
+
+  .fadeout {
+    animation: fadeout 1s ease forwards;
+  }
+  
+ 
+  .blink {
+    animation: blink 1s linear infinite;  /* Animation name, duration, timing function, repeat count */
+  }
+  .press-ctn{
+
+    font-family: NeueMachina, "Neue Machina ReUltrabold", sans-serif;
+  }
+#demo{
+align-self: start;
+}
+
+.welcome-ctn {
+  background-color: #232323;
+  color: whitesmoke;
+  font-family: ProximaNova, "Proxima Nova";
+  width: 100%;
+  display: none;
+  justify-content: center; /* Centers content horizontally */
+background-image: url(./pic/shadow3.png);
+background-repeat: no-repeat;
+background-size: contain;
+background-position: right;
+  top: 10%;
+  height: 75%;
+position: absolute;
+
+}
+h2{
+  text-align: center;
+}
+.dial{
+  position: absolute;
+  width: 50%;
+  left: 5%;
+  top: 15%;
+  font-size: 30px;
+  font-weight: 300;
+  padding: 10px;
+}
+.fade-in {
+  opacity: 0; 
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes spin{
+  0%{
+    background-position-x: 0;
+  }
+  100%{
+    background-position-x: 380px;
+
+  }
+}
+.alert {
+  position: absolute;
+  color: whitesmoke;
+  font-family: NeueMachina, "Neue Machina ReUltrabold", sans-serif;
+  font-size: 4em;
+  text-align: center;
+font-weight: 100;
+width: 100%;
+background-color: rgba(0, 255, 255, 0.5);
+justify-content: center;
+align-items: center;
+display: none;
+animation: blink 1s infinite;
+
+}
+
+.img-hor {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+.earth{
+
+  width: 150px;
+  height: 150px;
+  background: url(https://1.bp.blogspot.com/-UUXaK5GCj-k/UcsKJRMgkVI/AAAAAAAACfM/sePP_H08JTQ/s1600/1.jpg);
+  border-radius: 100%;
+  background-size: 380px;
+  animation: spin 3.5s infinite linear;
+  
+}
+.intro-ctn {
+  flex-direction: column;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-family: ProximaNova, "Proxima Nova";
+color: white;
+  transform: translate(-50%, -50%);
+}
+.intro-ctn > span{
+text-align: center;
+margin: 10px;
+}

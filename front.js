@@ -49,7 +49,9 @@ const incrementPercentage = () => {
     }
 
 };
-
+const getStarted = document.querySelector(".get-started").addEventListener("click",function(){
+  window.open("https://ixfeederix.github.io/The-Alpha-Intelligence-Project/indexAlpha.html", '_blank').focus();
+})
 incrementPercentage();
 const discordBtn2 = document.querySelector(".discord-btn2")
 const discordBtn = document.querySelector(".discord-btn").addEventListener("click", function() {
